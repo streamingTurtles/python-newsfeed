@@ -1,14 +1,17 @@
 **Title:** Set up app to render templates
 **User Stories**
 * As a user, I want to be able to view the home and dashboard pages in the browser
-
+- DONE in Master branch setup
 
 
 #
 **Title:** Set up database and models
 **User Stories**
 * As a user, I need a database that can store my account, posts, comments, or upvotes
-
+- 
+- COMPLETED IN THE FOLLOWING BRANCHES:
+- DONE in feature/app-setup branch
+- DONE in feature/models branch
 
 
 

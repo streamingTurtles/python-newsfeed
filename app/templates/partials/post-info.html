@@ -1,11 +1,36 @@
 <article class="post">
   <div class="title">
     <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
-    <span>({{post.post_url}})</span>
+    <!-- _x -  url update -->
+    <!-- update the span tag - see commnet in aap/__init__.py - once the filters are registered there-->
+    <!-- <span>({{post.post_url}})</span> -->
+    <!-- updated span below -->
+    <!-- This code passes post.post_url as the argument to the format_url() function -->
+    <!-- <span>({{post.post_url}})</span> -->
+    <span>({{post.post_url|format_url}})</span>
   </div>
+  <!-- The format_plural() function differs a bit, 
+  because it needs two arguments. Update the first line in the div as -->
   <div class="meta">
-    {{post.vote_count}} point(s) by {{post.user.username}} on {{post.created_at}}
+    <!-- _x - date update -->
+    <!-- original syntax below  -->
+    <!-- {{post.vote_count}} point(s) by {{post.user.username}} on {{post.created_at}} -->
+    <!-- comment out beloww to update for the date -->
+    <!-- {{post.vote_count}} point(s) by {{post.user.username}} on {{post.created_at|format_date}} -->
+    <!-- _x - vote update -->
+    <!-- The first {{post.vote_count}} displays the number as is. But the second one uses the format_plural() filter, 
+    followed by a second argument of 'point', to return either "point" or "points". -->
+    {{post.vote_count}} {{post.vote_count|format_plural('point')}} by {{post.user.username}} on {{post.created_at|format_date}}
     |
-    <a href="/post/{{post.id}}">{{post.comments|length}} comment(s)</a>
+    <!-- _x - comments update  -->
+    <!-- <a href="/post/{{post.id}}">{{post.comments|length}} comment(s)</a> -->
+    <a href="/post/{{post.id}}">{{post.comments|length}} {{post.comments|length|format_plural('comment')}}</a>
   </div>
 </article>
+
+
+
+
+
+
+
