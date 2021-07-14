@@ -23,15 +23,22 @@ class User(Base):
   def validate_email(self, key, email):
     # make sure email address contains @ character
     assert '@' in email
-
     return email
+    
 
   @validates('password')
   def validate_password(self, key, password):
     assert len(password) > 4
-
     # return password  
     return bcrypt.hashpw(password.encode('utf-8'), salt)
+
+
+  # if the eMail exists, then verify the password
+  def verify_password(self, password):
+    return bcrypt.checkpw(
+     password.encode('utf-8'),
+     self.password.encode('utf-8')
+   )
 
 
 

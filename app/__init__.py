@@ -1,4 +1,6 @@
-from app.routes import home, dashboard
+# from app.routes import home, dashboard
+# lesson 4 added - comment out above and added below
+from app.routes import home, dashboard, api
 from flask import Flask
 from app.db import init_db
 # _x - to use your custom filter functions, they need to be registered with the Jinja template environment - here
@@ -21,6 +23,9 @@ def create_app(test_config=None):
   app.jinja_env.filters['format_url'] = filters.format_url
   app.jinja_env.filters['format_date'] = filters.format_date
   app.jinja_env.filters['format_plural'] = filters.format_plural
+  # lesson 4 added below
+  app.register_blueprint(api)
+
   
 
 
